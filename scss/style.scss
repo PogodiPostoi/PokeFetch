@@ -1,0 +1,79 @@
+/*
+? Цвета:
+    header: #313131 (серый)
+    bgc: #f1f3f9 (серо-синий)
+    Акцент/hover кнопки: #ff6c00 (оранжевый) 
+    кнопка active: #e25e00 (оранжевый темнее)
+    Шрифт: #7d7f9e (серо-фиолетовый)
+    доп инфа: #bfccde (светло-серый)
+    Кнопки / тайтл: #4065e4 (синий)
+? Шрифт:
+    DESKTOP: 
+        h1: 42px+
+        h2: 38px
+        h3: 25px
+        body text: ~18px
+        nav links: ~16px
+        inputs: ~18px
+        secondary text: ~16px
+    MOBILE: 
+        -2 from all above
+*/
+
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&display=swap');
+
+html {
+    font-family: 'Oswald', sans-serif;
+    font-size: 16px;
+    color: #5a5b72;
+}
+
+/*color variables*/
+
+$color-header: #313131;
+$color-background: #f1f3f9;
+$color-orange: #ff6c00;
+$color-darkorange: #e25e00;
+$color-text: #7d7f9e;
+$color-text-additional: #bfccde;
+$color-blue: #4065e5;
+$color-yellow: #fd0;
+$color-red: rgb(250, 66, 56);
+$color-purple-blue: #8191e6;
+$color-green-cyan: #00d084;
+$color-cyan-blue: #0693e3;
+
+/*templates*/
+
+%responsive-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+body {
+    // background-color: $color-green-cyan;
+    background-color: $color-purple-blue;
+    color: $color-text;
+    .site {
+        padding: 0 20% 0;
+        min-height: 100%;
+        display: grid;
+        grid-template-columns: 300px auto;
+        grid-template-rows: 50px auto 50px;
+        grid-template-areas: 'header header'
+                            'card list'
+                            'footer footer';
+    }
+}
+
+
+
+@import '_nullstyle.scss',
+'_header.scss',
+'_pokemon-card.scss',
+'_pokemon-list.scss',
+'_footer.scss';

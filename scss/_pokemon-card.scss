@@ -1,0 +1,88 @@
+.pokemon-card {
+    grid-area: card;
+    justify-self: center;
+    width: 270px;
+    height: 525px;
+    margin-top: 15px;
+    padding: 0 20px;
+    background-color: #fff;
+    border: solid $color-yellow;
+    border-width: 20px 15px;
+    border-radius: 20px;
+    .pokemon-card__title-block {
+        display: flex;
+        justify-content: space-between;
+        align-items: end;
+        padding-bottom: 5px;
+        .pokemon-card__name {
+            color: $color-header;
+            font-size: 24px;
+            font-weight: 700;
+            line-height: 0.9;
+            text-transform: capitalize;
+            & span {
+                font-size: 14px;
+            }
+        }
+        .pokemon-card__hp {
+            color: $color-red;
+            font-size: 24px;
+            text-transform: uppercase;
+            font-weight: 700;
+        }
+    }
+    .pokemon-card__image-block {
+        width: 200px;
+        height: 200px;
+        border: 5px solid $color-yellow;
+        position: relative;
+        background: url('/img/pokemon-card/forest-background.jpg') #fff;
+        .pokemon-card__image {
+            @extend %responsive-image;
+            padding: 15px;
+            
+        }
+    }
+    .pokemon-card__description-block {
+        padding: 10px 0;
+        .pokemon-card__description-title {
+            font-weight: 700;
+            font-size: 16px;
+            color: $color-header;
+            padding: 0 0 5px 0;
+        }
+        .pokemon-card__stat-block {
+            display: flex;
+            // justify-content: center;
+            flex-direction: row;
+            flex-wrap: wrap;
+            .pokemon-card__description-text {
+                padding: 5px;
+            }
+        }
+        .pokemon-card__line {
+            height: 2px;
+            width: 100%;
+            margin-top: 10px;
+            background-color: $color-text;
+        }
+    }
+    .pokemon-card__side-images-block {
+        display: flex;
+        justify-content: space-around;
+        .pokemon-card__side-item {
+            display: flex;
+            flex-direction: column;
+            justify-content: start;
+            align-items: center;
+            p {
+                font-size: 16px;
+                &::first-letter {
+                    text-transform: uppercase;
+                }
+            }
+            
+        }
+    }
+}
+
