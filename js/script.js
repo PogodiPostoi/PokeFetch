@@ -11,7 +11,7 @@ const dittoUrl = 'https://pokeapi.co/api/v2/pokemon/1/' // max pokemon = 898
 
 /* pokemons ids to loading in list */
 let pokeIds = [1,2,3,4,5,6,7,8,9,10];
-pokeIds = pokeIds.map(e => e*60)
+pokeIds = pokeIds.map(e => e*60) 
 
 const getPokemonCard = async (url) => {
     try {
