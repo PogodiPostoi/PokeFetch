@@ -1,3 +1,5 @@
+//hihi
+
 const image = document.getElementById('img')
 const imageFront = document.getElementById('front-side-image')
 const imageBack = document.getElementById('back-side-image')
