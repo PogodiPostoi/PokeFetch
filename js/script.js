@@ -1,5 +1,3 @@
-//hihi
-
 const image = document.getElementById('img')
 const imageFront = document.getElementById('front-side-image')
 const imageBack = document.getElementById('back-side-image')
@@ -8,12 +6,26 @@ const pokemonNameSpan = document.getElementById('name_span')
 const pokemonHp = document.getElementById('hp')
 const descText = document.querySelectorAll('.pokemon-card__description-text')
 const pokeListImages = document.querySelectorAll('.pokemon-list__item-image')
+const pokeListElements = document.querySelectorAll('.pokemon-list__item-element')
+const pokeListHP = document.querySelectorAll('.pokemon-list__item-hp')
+const pokeListName = document.querySelectorAll('.pokemon-list__item-name')
+const pokeListItems = document.querySelectorAll('.pokemon-list__block-item')
 
-const dittoUrl = 'https://pokeapi.co/api/v2/pokemon/1/' // max pokemon = 898
+let clickedPokemon = 1
+let currentUrl = `https://pokeapi.co/api/v2/pokemon/` // max pokemon = 898
+
 
 /* pokemons ids to loading in list */
 let pokeIds = [1,2,3,4,5,6,7,8,9,10];
-pokeIds = pokeIds.map(e => e*60) 
+pokeIdPage = pokeIds.map(e => e + 490) 
+
+for (let i = 0; i < pokeListItems.length; i++) {
+    pokeListItems[i].addEventListener('click', () => {
+        clickedPokemon = pokeIdPage[i] 
+        pokemonCardNull()
+        getPokemonCard(currentUrl + clickedPokemon)
+    })
+}
 
 const getPokemonCard = async (url) => {
     try {
@@ -39,26 +51,62 @@ const getPokemonCard = async (url) => {
         imageBack.src = 'img/pokemon-card/bg-null.jpeg'
         imageFront.src = 'img/pokemon-card/bg-null.jpeg'
         console.log(error)
-        alert('К сожалению, покемонов не будет :(')
     }
 }
-getPokemonCard(dittoUrl)
+getPokemonCard(currentUrl + clickedPokemon)
 
-async function getPokemons(pokeIds) {    
-    const iterablePokeListImages = Array.from(pokeListImages)           
-    for (let id of pokeIds) {           
-        const url = "https://pokeapi.co/api/v2/pokemon/" + id       // с ошибкой
+const pokemonCardNull = () => {
+    image.src = ''
+    // pokemonName.textContent = ''
+    // pokemonNameSpan.textContent = ''
+    //! Разобраться, как можно перезаписывать верхнее название контента. И 492 покемон не влезает в карточку. Возможно понадобится резинить карточку
+    image.alt = ''
+    pokemonHp.textContent = ''
+    imageFront.src = ''
+    imageBack.src = ''
+    for (let i = 0; i < 5; i++) {
+        descText[i].textContent = ''
+    }
+}
+
+
+async function getPokemonList(ids) {    
+    const iterablePokeListImages = Array.from(pokeListImages)  
+    const iterablePokeListElements = Array.from(pokeListElements)
+    const iterablePokeListHP = Array.from(pokeListHP)
+    const iterablePokeListName = Array.from(pokeListName)
+    const iterablePokeListItems = Array.from(pokeListItems)
+    let i = 0
+    for (let id of ids) {           
+        const url = "https://pokeapi.co/api/v2/pokemon/" + id
+        let response
         try {
-            let response = await fetch(url) // отдельный сетевой запрос
-            let json = await response.json()
-            iterablePokeListImages[0].src = json.sprites.front_default
-            iterablePokeListImages.shift()
+            response = await fetch(url)
         } catch {
             console.log(error)
         }
+        if (response.ok) {
+            let json = await response.json()
+            iterablePokeListImages[0].src = json.sprites.front_default
+            iterablePokeListImages.shift()
+            iterablePokeListElements[0].textContent = json.types[0].type.name
+            iterablePokeListElements.shift()
+            iterablePokeListHP[0].textContent = `${json.stats[0].base_stat} hp`
+            iterablePokeListHP.shift()
+            iterablePokeListName[0].textContent = json.name
+            iterablePokeListName.shift()
+            i++
+        } else {
+            iterablePokeListItems[i].style.display = 'none'
+            i++
+        }
+        
+        
     }        
 }
-getPokemons(pokeIds)
+getPokemonList(pokeIdPage)
+
+
 
 
 

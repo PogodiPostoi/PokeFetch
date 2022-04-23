@@ -1,7 +1,8 @@
 .pokemon-list {
     width: 100%;
-    height: 80vh;
+    height: 85vh;
     margin: 15px 0 15px;
+    padding: 0 15px;
     border-radius: 20px;
     background-color: #fff;
     border: solid $color-yellow;
@@ -19,24 +20,66 @@
         align-self: center;
     }
     .pokemon-list__block {
-        padding: 0 15px;
-        overflow-y: scroll;
+        padding: 15px;
+        overflow-y: auto;
+        background: url('/img/pokemon-list/yellow-bg.jpg');
+        display: grid;
+        grid-template-columns: repeat(3, 30%);
+        grid-template-rows: repeat(4, auto);
+        justify-items: center;
+        gap: 0 5%;
         .pokemon-list__block-item {
-            margin: 10px 0;
-            height: 100px;
-            border: 1px solid $color-header;
+            margin: 5px 0;
+            height: auto;
+            width: 100%;
 
             display: grid;
-            grid-template-columns: 100px auto;
-            grid-template-rows: auto;
+            grid-template-columns: auto;
+            grid-template-rows: 95px auto;
+            &:hover {
+                cursor: pointer;
+            }
             .pokemon-list__item-image {
-                border: 1px solid $color-green-cyan;
+                justify-self: center;
             }
             .pokemon-list__item-description {
-                border: 1px solid $color-red;
-                .pokemon-list__item-title {
+                text-transform: capitalize;
+                background-color: #fff;
+                border: 2px solid $color-text;
+                border-radius: 3px;
+                height: 50px;
+                display: flex;
+                flex-wrap: wrap;
+                .pokemon-list__item-name {
+                    width: 100%;
+                    padding: 2px;
+                    text-align: center;
+                    align-self: center;
                 }
-                .pokemon-list__item-text {
+                .pokemon-list__item-hp {
+                    width: 30%;
+                    color: $color-red;
+                    padding: 2px;
+                    padding-bottom: 3px;
+                    text-align: left;
+                    align-self: end;
+                    text-transform: uppercase;
+                    font-weight: 500;
+                    font-size: 12px;
+                }
+                .pokemon-list__item-element-block {
+                    width: 70%;
+                    background-color: $color-text;
+                    border-top-left-radius: 50px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    .pokemon-list__item-element {
+                        padding: 2px;
+                        text-align: center;
+                        color: #fff;
+                        font-weight: 300;
+                    }
                 }
             }
         }
