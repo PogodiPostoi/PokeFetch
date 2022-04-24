@@ -32,6 +32,7 @@
             margin: 5px 0;
             height: auto;
             width: 100%;
+            max-width: 300px;
 
             display: grid;
             grid-template-columns: auto;
@@ -57,7 +58,7 @@
                     align-self: center;
                 }
                 .pokemon-list__item-hp {
-                    width: 30%;
+                    width: 40%;
                     color: $color-red;
                     padding: 2px;
                     padding-bottom: 3px;
@@ -68,7 +69,7 @@
                     font-size: 12px;
                 }
                 .pokemon-list__item-element-block {
-                    width: 70%;
+                    width: 60%;
                     background-color: $color-text;
                     border-top-left-radius: 50px;
                     display: flex;
@@ -85,5 +86,16 @@
         }
     }
     .pokemon-list__counter {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        .pokemon-list__page-counter {
+            border: 1px solid $color-header;
+            width: 40px;
+            text-align: center;
+            color: $color-text
+        }
+        .pokemon-list__chevron {
+        }
     }
 }

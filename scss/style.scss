@@ -70,6 +70,11 @@ body {
     }
 }
 
+.hidden {
+    position: absolute;
+    opacity: 0;
+}
+
 
 
 @import '_nullstyle.scss',

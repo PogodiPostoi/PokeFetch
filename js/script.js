@@ -10,14 +10,59 @@ const pokeListElements = document.querySelectorAll('.pokemon-list__item-element'
 const pokeListHP = document.querySelectorAll('.pokemon-list__item-hp')
 const pokeListName = document.querySelectorAll('.pokemon-list__item-name')
 const pokeListItems = document.querySelectorAll('.pokemon-list__block-item')
+const chevronLeft = document.querySelector('.pokemon-list__chevron--left')
+const chevronRight = document.querySelector('.pokemon-list__chevron--right')
+const pageCounter = document.getElementById('page-counter')
 
+let currentPage = 89
 let clickedPokemon = 1
 let currentUrl = `https://pokeapi.co/api/v2/pokemon/` // max pokemon = 898
 
 
 /* pokemons ids to loading in list */
 let pokeIds = [1,2,3,4,5,6,7,8,9,10];
-pokeIdPage = pokeIds.map(e => e + 490) 
+let pokeIdPage = pokeIds.map(e => e + Number(`${currentPage}0`)) 
+
+const pokeIdPageChanger = () => pokeIdPage = pokeIds.map(e => e + Number(`${currentPage}0`)) 
+
+chevronLeft.addEventListener('click', () => {
+    if (currentPage > 0) {
+        currentPage--
+        pageCounterChanger()
+        pokeIdPageChanger()
+        getPokemonList(pokeIdPage)
+    } else {
+        alert('There are nothing to watch')
+    }
+})
+chevronRight.addEventListener('click', () => {
+    if (currentPage < 89) {
+        currentPage++
+        pageCounterChanger()
+        pokeIdPageChanger()
+        getPokemonList(pokeIdPage)
+    } else {
+        alert('There are nothing to watch')
+    }
+})
+
+const pageCounterChanger = () => {
+    pageCounter.value = currentPage
+}
+pageCounterChanger()
+
+pageCounter.addEventListener('change', () => {
+    if (pageCounter.value >= 0 && pageCounter.value <= 89) {
+        currentPage = pageCounter.value
+        pageCounterChanger()
+        pokeIdPageChanger()
+        getPokemonList(pokeIdPage)
+    } else {
+        alert('There are nothing to watch')
+        pageCounterChanger()
+    }
+})
+
 
 for (let i = 0; i < pokeListItems.length; i++) {
     pokeListItems[i].addEventListener('click', () => {
@@ -26,6 +71,7 @@ for (let i = 0; i < pokeListItems.length; i++) {
         getPokemonCard(currentUrl + clickedPokemon)
     })
 }
+
 
 const getPokemonCard = async (url) => {
     try {
@@ -57,9 +103,8 @@ getPokemonCard(currentUrl + clickedPokemon)
 
 const pokemonCardNull = () => {
     image.src = ''
-    // pokemonName.textContent = ''
-    // pokemonNameSpan.textContent = ''
-    //! Разобраться, как можно перезаписывать верхнее название контента. И 492 покемон не влезает в карточку. Возможно понадобится резинить карточку
+    pokemonName.textContent = ''
+    pokemonNameSpan.textContent = ''
     image.alt = ''
     pokemonHp.textContent = ''
     imageFront.src = ''
@@ -95,9 +140,12 @@ async function getPokemonList(ids) {
             iterablePokeListHP.shift()
             iterablePokeListName[0].textContent = json.name
             iterablePokeListName.shift()
+            if (iterablePokeListItems[i].classList.contains('hidden')) {
+                iterablePokeListItems[i].classList.remove('hidden')
+            }
             i++
         } else {
-            iterablePokeListItems[i].style.display = 'none'
+            iterablePokeListItems[i].classList.add('hidden')
             i++
         }
         

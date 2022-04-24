@@ -15,7 +15,8 @@
     
         <div class="pokemon-card">
                 <div class="pokemon-card__title-block">
-                    <p id="name" class="pokemon-card__name"><span id="name_span"></span><br></p>
+                    <p id="name_span" class="pokemon-card__element"></p>
+                    <p id="name" class="pokemon-card__name"></p>
                     <p id="hp" class="pokemon-card__hp"></p>
                 </div>
                 <div class="pokemon-card__image-block">
@@ -150,7 +151,9 @@
                 </div>
             </div>
             <div class="pokemon-list__counter">
-
+                <img class="pokemon-list__chevron pokemon-list__chevron--left" src="img/pokemon-list/chevron_left.png" alt="chevron left">
+                <input class="pokemon-list__page-counter" type="text" name="page" id="page-counter">
+                <img class="pokemon-list__chevron pokemon-list__chevron--right" src="img/pokemon-list/chevron_right.png" alt="chevron right">
             </div>
         </div>
     
