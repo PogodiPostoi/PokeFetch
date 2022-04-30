@@ -1,6 +1,32 @@
 .footer {
     grid-area: footer;
     height: 50px;
+    padding: 0 20px;
     border-radius: 20px 20px 0 0;
     background-color: $color-green-cyan;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    .footer__author-block {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+        color: $color-header;
+        .btn__telegram::before {
+            content: url('/img/footer/logo-telegram.png');
+        }
+        .btn__github::before {
+            content: url('/img/footer/GitHub-Mark-32px.png');
+        }
+    }
+    .btn__api {
+        width: 105px;
+        &::before {
+            content: 'Pokemon API';
+        }
+        &::before, &::after {
+            width: 100px;
+        }
+    }
 }

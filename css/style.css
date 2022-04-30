@@ -61,6 +61,68 @@ body .site {
   opacity: 0;
 }
 
+.btn {
+  height: 40px;
+  width: 40px;
+  position: relative;
+  z-index: 2;
+  text-decoration: none;
+  color: #313131;
+  font-weight: 500;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  cursor: pointer;
+}
+
+.btn::before, .btn::after {
+  position: absolute;
+  height: 40px;
+  width: 40px;
+  border: 2px solid #313131;
+  border-radius: 20px;
+  -webkit-transition: 200ms ease;
+  -o-transition: 200ms ease;
+  transition: 200ms ease;
+}
+
+.btn::before {
+  content: '';
+  background-color: #fd0;
+  z-index: 1;
+  bottom: 2px;
+  right: 3px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.btn::after {
+  content: '';
+  background-color: #fff;
+  top: 2px;
+  right: 0;
+  z-index: 0;
+}
+
+.btn:hover::before {
+  bottom: -2px;
+  right: 0;
+  background-color: #8191e6;
+}
+
 /*Обнуление*/
 * {
   padding: 0;
@@ -143,6 +205,20 @@ h1, h2, h3, h4, h5, h6 {
   height: 50px;
   border-radius: 0 0 20px 20px;
   background-color: #00d084;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.header .header__logo {
+  height: 40px;
+  padding: 0px 0px 0px 10px;
 }
 
 .pokemon-card {
@@ -427,6 +503,50 @@ h1, h2, h3, h4, h5, h6 {
   -ms-grid-column-span: 2;
   grid-area: footer;
   height: 50px;
+  padding: 0 20px;
   border-radius: 20px 20px 0 0;
   background-color: #00d084;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.footer .footer__author-block {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 10px;
+  color: #313131;
+}
+
+.footer .footer__author-block .btn__telegram::before {
+  content: url("/img/footer/logo-telegram.png");
+}
+
+.footer .footer__author-block .btn__github::before {
+  content: url("/img/footer/GitHub-Mark-32px.png");
+}
+
+.footer .btn__api {
+  width: 105px;
+}
+
+.footer .btn__api::before {
+  content: 'Pokemon API';
+}
+
+.footer .btn__api::before, .footer .btn__api::after {
+  width: 100px;
 }

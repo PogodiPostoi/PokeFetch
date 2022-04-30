@@ -3,4 +3,11 @@
     height: 50px;
     border-radius: 0 0 20px 20px;
     background-color: $color-green-cyan;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .header__logo {
+        height: 40px;
+        padding: 0px 0px 0px 10px;
+    }
 }

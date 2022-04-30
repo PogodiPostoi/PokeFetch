@@ -14,7 +14,7 @@ const chevronLeft = document.querySelector('.pokemon-list__chevron--left')
 const chevronRight = document.querySelector('.pokemon-list__chevron--right')
 const pageCounter = document.getElementById('page-counter')
 
-let currentPage = 89
+let currentPage = 0
 let clickedPokemon = 1
 let currentUrl = `https://pokeapi.co/api/v2/pokemon/` // max pokemon = 898
 
