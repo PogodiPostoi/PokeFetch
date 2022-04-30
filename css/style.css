@@ -87,9 +87,9 @@ body .site {
   width: 40px;
   border: 2px solid #313131;
   border-radius: 20px;
-  -webkit-transition: 200ms ease;
-  -o-transition: 200ms ease;
-  transition: 200ms ease;
+  -webkit-transition: 100ms ease;
+  -o-transition: 100ms ease;
+  transition: 100ms ease;
 }
 
 .btn::before {
