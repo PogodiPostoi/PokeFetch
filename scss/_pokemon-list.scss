@@ -1,6 +1,6 @@
 .pokemon-list {
     width: 100%;
-    height: 85vh;
+    height: 82vh;
     margin: 15px 0 15px;
     padding: 0 15px;
     border-radius: 20px;
@@ -95,7 +95,34 @@
             text-align: center;
             color: $color-text
         }
-        .pokemon-list__chevron {
+    }
+}
+
+@media (max-width: 1279px) {
+
+    
+}
+
+@media (max-width: 1023px) {
+    .pokemon-list {
+        .pokemon-list__block {
+            grid-template-columns: repeat(2, 45%);
+            grid-template-rows: repeat(5, auto);
         }
     }
+}
+
+@media (max-width: 767px) {
+    .pokemon-list {
+        width: 97%;
+        border-width: 10px 7px;
+        .pokemon-list__block {
+            grid-template-columns: auto;
+            grid-template-rows: auto;
+        }
+    }
+}
+
+@media (max-width: 479px) {
+    
 }

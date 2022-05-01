@@ -119,6 +119,29 @@ body {
     }
 }
 
+@media (max-width: 1279px) {
+    body {
+        .site{
+            padding: 0 5% 0;
+        }
+    }
+}
+
+@media (max-width: 1023px) {
+    
+}
+
+@media (max-width: 767px) {
+    body {
+        .site{
+            padding: 0;
+        }
+    }
+}
+
+@media (max-width: 479px) {
+    
+}
 
 
 @import '_nullstyle.scss',
